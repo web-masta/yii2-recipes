@@ -1,6 +1,6 @@
 {
   "name": "web-masta/yii2-recipes",
-  "description": "Yii2 recipes MVP module",
+  "description": "Yii2 recipes MVP extension",
   "keywords": ["yii2", "module", "recipes"],
   "type": "yii2-extension",
   "license": "MIT",
