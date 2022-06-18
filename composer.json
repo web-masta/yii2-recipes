@@ -10,6 +10,6 @@
     "yiisoft/yii2": "^2.0"
   },
   "autoload": {
-    "psr-4": {"web-masta\\recipes\\": ""}
+    "psr-4": {"webmasta\\yii2recipes\\": ""}
   }
 }
