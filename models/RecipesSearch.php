@@ -19,8 +19,8 @@ class RecipesSearch extends Recipes
     public function rules(): array
     {
         return [
-            //[['id'], 'integer'],
-            //[['title', 'description'], 'safe'],
+            [['id'], 'integer'],
+            [['title', 'description'], 'safe'],
             [['ingredients'], 'safe'],
         ];
     }
@@ -43,9 +43,7 @@ class RecipesSearch extends Recipes
      */
     public function search(array $params): ActiveDataProvider
     {
-        //$query = Recipes::find();
-        $query = Recipes::find()->innerJoinWith('ingredients', true);
-
+        $query = Recipes::find();
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -61,15 +59,9 @@ class RecipesSearch extends Recipes
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            //'id' => $this->id,
-            'ingredients_id' => $this->ingredients,
-        ]);
-
-
-
-        //$query->andFilterWhere(['like', 'title', $this->title])
-        //    ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['id' => $this->id,])
+            ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }
