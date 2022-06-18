@@ -7,7 +7,8 @@ use yii\web\JqueryAsset;
 
 class RecipesAssets extends AssetBundle
 {
-    public $sourcePath = '@app/modules/recipes/assets';
+    //public $sourcePath = '@app/modules/recipes/assets';
+    public $sourcePath = '@app/vendor/web-masta/yii2-recipes/assets';
     public $css = [
         'css/multi-select.css',
     ];
