@@ -144,18 +144,32 @@ class UserSearchModel extends Model
     }
 
     /**
+     * Returns ingredients names from array of ids
+     * @param array $ingredients
+     * @return array
+     */
+    public function getIngredientsNames(array $ingredients): array {
+        $names = [];
+        foreach ($ingredients as $ingredient) {
+            $names[] = Ingredients::findOne($ingredient)->title;
+        }
+        return $names;
+    }
+
+    /**
      * Get recipes, matching search and filter criteria and prepare it for ArrayDataProvider
      * @return array
      */
     public function getRecipes(): array
     {
         $recipes = [];
-        foreach (Recipes::findAll(['id' => array_keys($this->getCounter())]) as $key => $val) {
+        foreach (Recipes::findAll(['id' => array_keys($this->getCounter())]) as $val) {
             $recipes[] = [
                 'id' => $val->id,
                 'title' => $val->title,
                 'description' => $val->description,
                 'count' => $this->getCounter()[$val->id],
+                'ingredients' => join(', ', $this->getIngredientsNames($this->recipes[$val->id])),
             ];
         }
         return $recipes;

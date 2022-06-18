@@ -45,6 +45,7 @@
             ['class' => 'yii\grid\SerialColumn'],
             'title',
             'count',
+            'ingredients',
         ],
     ]);
 

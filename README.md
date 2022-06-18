@@ -2,7 +2,7 @@
 
 Установка
 ---
-1) Модуль положить в папку `/modules`
+1) Запустить `composer require web-masta/yii2-recipes`
 
 2) В файл `/config/web.php` добавить:
 
@@ -14,9 +14,10 @@
     ],
 ```
 
-3) В `/web/console.php`:
+3) В `/web/console.php` в секции controllerMap добавить:
 
 ```phpt /web/console.php
+    'controllerMap' => [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationNamespaces' => [
@@ -24,10 +25,10 @@
                 'webmasta\yii2recipes\migrations',
             ]
         ],
+    ],
 ```
 
 4) Запустить миграции `php yii migrate`
-5) Поиск рецептов доступен по адресу `/index.php?r=recipes` или просто `/recipes`, если включена опция `'enablePrettyUrl' => true`.
+5) Поиск рецептов доступен по адресу `/index.php?r=recipes` или просто `/recipes`, если включена опция `'enablePrettyUrl' => true` в конфиге сайта.
 6) CRUD рецептов: `/recipes/recipes`
 7) CRUD ингридиентов: `/recipes/ingredients`
-
