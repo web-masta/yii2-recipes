@@ -1,14 +1,14 @@
 <?php
 
-namespace app\modules\recipes\models;
+namespace webmasta\yii2recipes\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\recipes\models\Recipes;
+use webmasta\yii2recipes\models\Recipes;
 use yii\helpers\VarDumper;
 
 /**
- * RecipesSearch represents the model behind the search form of `app\modules\recipes\models\Recipes`.
+ * RecipesSearch represents the model behind the search form of `webmasta\yii2recipes\models\Recipes`.
  */
 class RecipesSearch extends Recipes
 {

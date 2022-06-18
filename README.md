@@ -9,7 +9,7 @@
 ```phpt /config/web.php
     'modules' => [
         'recipes' => [
-            'class' => 'app\modules\recipes\Recipes',
+            'class' => 'webmasta\yii2recipes\Recipes',
         ],
     ],
 ```
@@ -21,7 +21,7 @@
             'class' => 'yii\console\controllers\MigrateController',
             'migrationNamespaces' => [
                 'app\migrations',
-                'app\modules\recipes\migrations',
+                'webmasta\yii2recipes\migrations',
             ]
         ],
 ```

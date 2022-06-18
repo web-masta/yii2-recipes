@@ -1,10 +1,10 @@
 <?php
     /* @var $this yii\web\View */
-    /* @var $model \app\modules\recipes\models\UserSearchModel */
+    /* @var $model \webmasta\yii2recipes\models\UserSearchModel */
 
     $this->title = 'Recipe search';
 
-    use app\modules\recipes\RecipesAssets;
+    use webmasta\yii2recipes\RecipesAssets;
     use yii\data\ArrayDataProvider;
     use yii\grid\GridView;
     use yii\helpers\Html;
@@ -52,7 +52,7 @@
     if($request->get('debug') !== null && $request->get('debug') == 1) {
         echo '<pre>';
         VarDumper::dump($model);
-        VarDumper::dump(\app\modules\recipes\models\Ingredients::find()->all());
+        VarDumper::dump(\webmasta\yii2recipes\models\Ingredients::find()->all());
         echo '</pre>';
     }
 ?>

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\recipes\models\Recipes */
+/* @var $model webmasta\yii2recipes\models\Recipes */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Recipes', 'url' => ['index']];

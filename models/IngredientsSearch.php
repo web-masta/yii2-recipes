@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\recipes\models;
+namespace webmasta\yii2recipes\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\recipes\models\Ingredients;
+use webmasta\yii2recipes\models\Ingredients;
 
 /**
- * IngredientsSearch represents the model behind the search form of `app\modules\recipes\models\Ingredients`.
+ * IngredientsSearch represents the model behind the search form of `webmasta\yii2recipes\models\Ingredients`.
  */
 class IngredientsSearch extends Ingredients
 {

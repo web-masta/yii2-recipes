@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\recipes;
+namespace webmasta\yii2recipes;
 
 use yii\base\Module;
 
@@ -12,7 +12,7 @@ class Recipes extends Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\recipes\controllers';
+    public $controllerNamespace = 'webmasta\yii2recipes\controllers';
 
     /**
      * {@inheritdoc}

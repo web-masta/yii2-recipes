@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\recipes\controllers;
+namespace webmasta\yii2recipes\controllers;
 
-use app\modules\recipes\models\Ingredients;
-use app\modules\recipes\models\Recipes;
-use app\modules\recipes\models\RecipesSearch;
+use webmasta\yii2recipes\models\Ingredients;
+use webmasta\yii2recipes\models\Recipes;
+use webmasta\yii2recipes\models\RecipesSearch;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\web\Controller;

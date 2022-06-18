@@ -1,8 +1,8 @@
 <?php
 
-namespace app\modules\recipes\controllers;
+namespace webmasta\yii2recipes\controllers;
 
-use app\modules\recipes\models\UserSearchModel;
+use webmasta\yii2recipes\models\UserSearchModel;
 use Yii;
 use yii\web\Controller;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\recipes\migrations;
+namespace webmasta\yii2recipes\migrations;
 use yii\db\Migration;
 
 /**

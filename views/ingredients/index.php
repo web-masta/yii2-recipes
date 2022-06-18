@@ -1,13 +1,13 @@
 <?php
 
-use app\modules\recipes\models\Ingredients;
+use webmasta\yii2recipes\models\Ingredients;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\recipes\models\IngredientsSearch */
+/* @var $searchModel webmasta\yii2recipes\models\IngredientsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Ingredients';

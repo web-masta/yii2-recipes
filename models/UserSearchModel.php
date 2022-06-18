@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\recipes\models;
+namespace webmasta\yii2recipes\models;
 
 use JetBrains\PhpStorm\ArrayShape;
 use Yii;

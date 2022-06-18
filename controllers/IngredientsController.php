@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\recipes\controllers;
+namespace webmasta\yii2recipes\controllers;
 
-use app\modules\recipes\models\Ingredients;
-use app\modules\recipes\models\IngredientsSearch;
+use webmasta\yii2recipes\models\Ingredients;
+use webmasta\yii2recipes\models\IngredientsSearch;
 use JetBrains\PhpStorm\ArrayShape;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;

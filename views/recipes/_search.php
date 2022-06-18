@@ -1,13 +1,13 @@
 <?php
 
-use app\modules\recipes\models\Ingredients;
-use app\modules\recipes\RecipesAssets;
+use webmasta\yii2recipes\models\Ingredients;
+use webmasta\yii2recipes\RecipesAssets;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\recipes\models\RecipesSearch */
+/* @var $model webmasta\yii2recipes\models\RecipesSearch */
 /* @var $form yii\widgets\ActiveForm */
 
 RecipesAssets::register($this);
