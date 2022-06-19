@@ -1,5 +1,10 @@
 Тестовое задание: создать модуль для выборки блюд по ингридиентам.
 
+- Демо клиентской части - https://yii.mymailserver.ru/recipes
+- CRUD ингридиентов - https://yii.mymailserver.ru/recipes/recipes
+- CRUD рецептов - https://yii.mymailserver.ru/recipes/ingredients
+
+
 Установка
 ---
 1) Запустить `composer require web-masta/yii2-recipes`
