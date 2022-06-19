@@ -74,6 +74,7 @@ class UserSearchModel extends Model
                 return $this->returnRecipes();
             }
         }
+        return [];
     }
 
     /**

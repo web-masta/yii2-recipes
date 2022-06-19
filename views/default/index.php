@@ -22,11 +22,11 @@ $form = ActiveForm::begin([
 echo $form->field($model, 'ingredients')->listBox($model->rangeSelection(), ['multiple' => true, 'id' => 'recipe-search']);
 ?>
     <div class="form-group">
-        <?php echo Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?php echo Html::submitButton('Search', ['class' => 'btn btn-primary', 'id' => 'recipe-search-button']) ?>
     </div>
 <?php ActiveForm::end(); ?>
 
-    <div id="filter-message" class="alert alert-danger" style="display: none; margin: 20px"></div>
+    <div id="filter-message" class="alert alert-warning" style="display: none; margin: 20px"></div>
 
 <?php
 $dataProvider = new ArrayDataProvider([
