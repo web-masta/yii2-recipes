@@ -74,7 +74,6 @@ class UserSearchModel extends Model
                 return $this->returnRecipes();
             }
         }
-        return null;
     }
 
     /**
@@ -83,15 +82,12 @@ class UserSearchModel extends Model
      */
     public function returnRecipes(): array
     {
-        $ids = [];
         foreach ($this->ingredients as $ingredient) {
             $recipes = RecipesIngredients::findAll(['ingredients_id' => $ingredient]);
             foreach ($recipes as $recipe) {
-                $ids[$recipe->recipes_id][] = $recipe->ingredients_id;
-                $this->counter[$recipe->recipes_id] = 0;
+                $this->recipes[$recipe->recipes_id]['ingredients'][] = $recipe->ingredients_id;
             }
         }
-        $this->recipes = $ids;
         return $this->countIngredients();
     }
 
@@ -101,19 +97,15 @@ class UserSearchModel extends Model
      */
     public function countIngredients(): array
     {
-        foreach ($this->ingredients as $ingredient) {
-            foreach ($this->recipes as $key => $value) {
-
-                if(in_array($ingredient, $value)) {
-                    $this->counter[$key]++;
-                }
-            }
+        foreach ($this->recipes as $key => $value) {
+            $this->counter[$key] = count($this->getIngredients($key));
+            $this->recipes[$key]['exactMatch'] = count($this->recipes[$key]['ingredients']);
         }
         $this->cutCounter();
         if (count($this->counter) < $this->min) {
             Yii::$app->getSession()->setFlash('danger', 'Ничего не найдено');
         }
-        arsort($this->counter);
+        krsort($this->counter);
         return $this->counter;
     }
 
@@ -124,9 +116,13 @@ class UserSearchModel extends Model
     public function cutCounter(): void
     {
         foreach ($this->counter as $key => $value) {
-            if($value < $this->min) {
+
+            $this->recipes[$key]['activeStatus'] = $this->getIngredientsActiveStatus($key);
+
+            if($this->recipes[$key]['exactMatch'] < $this->min
+                || in_array(0, $this->recipes[$key]['activeStatus'])) {
                 unset($this->counter[$key]);
-            } elseif ($value == count($this->ingredients)) {
+            } elseif ($this->recipes[$key]['exactMatch'] == $this->counter[$key]) {
                 // Если полное совпадение выбранных ингридиентов, создаём новый массив
                 $this->exactMatch[$key] = $value;
                 Yii::$app->getSession()->setFlash('success', 'Точное совпадение ингредиентов');
@@ -144,6 +140,33 @@ class UserSearchModel extends Model
     }
 
     /**
+     * Return all ingredients of recipe
+     * @param int $recipeId
+     * @return array
+     */
+    public function getIngredients(int $recipeId) {
+        $ids = [];
+        foreach (RecipesIngredients::findAll(['recipes_id' => $recipeId]) as $ingredient) {
+            $ids[] = $ingredient->ingredients_id;
+        }
+        return $ids;
+    }
+
+    /**
+     * Return array with ingredient active status
+     * @param int $recipeId
+     * @return array
+     */
+    public function getIngredientsActiveStatus(int $recipeId) {
+        $status = [];
+        $ingredients = $this->getIngredients($recipeId);
+        foreach ($ingredients as $ingredient) {
+            $status[] = Ingredients::findOne($ingredient)->active;
+        }
+        return $status;
+    }
+
+    /**
      * Returns ingredients names from array of ids
      * @param array $ingredients
      * @return array
@@ -154,6 +177,14 @@ class UserSearchModel extends Model
             $names[] = Ingredients::findOne($ingredient)->title;
         }
         return $names;
+    }
+
+    /**
+     * For debug only
+     * @return array
+     */
+    public function printRecipes() {
+        return $this->recipes;
     }
 
     /**
@@ -169,7 +200,8 @@ class UserSearchModel extends Model
                 'title' => $val->title,
                 'description' => $val->description,
                 'count' => $this->getCounter()[$val->id],
-                'ingredients' => join(', ', $this->getIngredientsNames($this->recipes[$val->id])),
+                'match' => $this->recipes[$val->id]['exactMatch'],
+                'ingredients' => join(', ', $this->getIngredientsNames($this->getIngredients($val->id))),
             ];
         }
         return $recipes;
